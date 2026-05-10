@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MADARA BAN TOOL 🛡️</title>
+    <style>
+        :root { --neon-green: #00ff88; --neon-red: #ff3131; --bg-dark: #0a0a0a; --card-bg: #161616; }
+        body { background-color: var(--bg-dark); color: white; font-family: 'Courier New', Courier, monospace; display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; padding: 15px; }
+
+        /* Écran de Verrouillage */
+        #lock-screen { position: fixed; inset: 0; background: black; display: flex; align-items: center; justify-content: center; z-index: 10000; }
+        .lock-box { background: var(--card-bg); padding: 30px; border-radius: 15px; border: 2px solid var(--neon-green); text-align: center; box-shadow: 0 0 25px var(--neon-green); }
+
+        /* Interface Principale */
+        #main-content { display: none; width: 100%; max-width: 420px; }
+        .header { text-align: center; margin-bottom: 15px; }
+        .header h1 { color: var(--neon-green); font-size: 1.6rem; margin: 0; text-shadow: 0 0 10px var(--neon-green); }
+
+        /* Zone d'affichage du texte */
+        .display-area { background: #000; border: 1px solid #333; border-radius: 12px; padding: 15px; margin-bottom: 20px; box-shadow: inset 0 0 10px #000; }
+        textarea { width: 100%; height: 130px; background: transparent; border: none; color: #00ff88; font-size: 0.85rem; resize: none; outline: none; }
+
+        /* Grille des Supports */
+        .support-grid { display: flex; flex-direction: column; gap: 12px; }
+        .ban-card { background: var(--card-bg); border: 1px solid #333; border-radius: 15px; padding: 15px; text-align: center; transition: 0.3s; }
+        .ban-card:hover { border-color: var(--neon-green); }
+        .ban-card h3 { margin: 0 0 10px; font-size: 1rem; letter-spacing: 1px; }
+
+        /* Boutons */
+        .btn-gen { width: 100%; padding: 10px; background: transparent; border: 1px solid var(--neon-green); color: var(--neon-green); border-radius: 25px; cursor: pointer; font-weight: bold; }
+        .btn-gen:hover { background: var(--neon-green); color: black; }
+        .red-btn { border-color: var(--neon-red); color: var(--neon-red); }
+        .red-btn:hover { background: var(--neon-red); color: white; }
+
+        .send-group { display: flex; gap: 10px; margin-top: 20px; }
+        .btn-final { flex: 1; padding: 15px; border: none; border-radius: 50px; font-weight: bold; cursor: pointer; font-size: 0.9rem; transition: 0.3s; }
+        .btn-wa { background: var(--neon-green); color: black; box-shadow: 0 5px 15px rgba(0,255,136,0.3); }
+        .btn-gm { background: var(--neon-red); color: white; box-shadow: 0 5px 15px rgba(255,49,49,0.3); }
+
+        input[type="password"], input[type="text"] { width: 90%; padding: 10px; margin: 10px 0; background: #111; border: 1px solid #444; color: white; border-radius: 5px; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <div id="lock-screen">
+        <div class="lock-box">
+            <h2 style="color: var(--neon-green);">MADARA PRIVÉ</h2>
+            <input type="password" id="pass" placeholder="ENTREZ LE NOM DU MAITRE">
+            <button class="btn-gen" onclick="unlock()">DÉVERROUILLER</button>
+        </div>
+    </div>
+
+    <div id="main-content">
+        <div class="header">
+            <h1>MADARA BAN V2 ⭐</h1>
+            <p style="color: #666; font-size: 0.7rem;">SYSTEME DE SUPPRESSION RADICALE</p>
+        </div>
+
+        <div class="display-area">
+            <p style="font-size: 0.7rem; color: #444; margin: 0 0 5px;">TEXTE GÉNÉRÉ :</p>
+            <textarea id="output" readonly></textarea>
+        </div>
+
+        <div class="support-grid">
+            <div class="ban-card">
+                <h3 style="color: var(--neon-green);">BAN ALPHA 🚫 (SÉCURITÉ)</h3>
+                <button class="btn-gen" onclick="gen(1)">Générer Ban 1 💎</button>
+            </div>
+            <div class="ban-card">
+                <h3 style="color: var(--neon-red);">BAN BETA ❌ (VIOLENCE)</h3>
+                <button class="btn-gen red-btn" onclick="gen(2)">Générer Ban 2 💎</button>
+            </div>
+            <div class="ban-card">
+                <h3 style="color: var(--neon-green);">BAN GAMMA ⚠️ (HARCÈLEMENT)</h3>
+                <button class="btn-gen" onclick="gen(3)">Générer Ban 3 💎</button>
+            </div>
+            <div class="ban-card">
+                <h3 style="color: var(--neon-red);">BAN DELTA 💀 (CRITIQUE)</h3>
+                <button class="btn-gen red-btn" onclick="gen(4)">Générer Ban 4 💎</button>
+            </div>
+        </div>
+
+        <div class="send-group">
+            <button class="btn-final btn-wa" onclick="send('wa')">WHATSAPP</button>
+            <button class="btn-final btn-gm" onclick="send('gm')">GMAIL</button>
+        </div>
+    </div>
+
+    <script>
+        const MASTER = "MADARA"; // Le mot de passe
+
+        function unlock() {
+            if(document.getElementById('pass').value.toUpperCase() === MASTER) {
+                document.getElementById('lock-screen').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+            } else { alert("ACCÈS REFUSÉ"); }
+        }
+
+        const reports = {
+            1: "🚨 DENUNCIA URGENTE: El número [N] está violando gravemente los términos de seguridad de la plataforma. Solicito suspensión inmediata.",
+            2: "⚠️ REPORT DE VIOLENCE CRITIQUE: L'utilisateur [N] propage du contenu interdit et dangereux. Intervention urgente requise pour bannissement.",
+            3: "🛑 HARASSMENT ALERT: Account [N] is involved in systematic cyber-bullying. This is a direct violation of community standards. Terminate now.",
+            4: "🆘 EMERGENCY SECURITY BREACH: [N] is bypassing safety protocols. This account poses a risk to all users. Permanent ban requested."
+        };
+
+        function gen(id) {
+            let cible = prompt("Numéro de la cible :");
+            if(cible) {
+                document.getElementById('output').value = reports[id].replace("[N]", cible);
+            }
+        }
+
+        function send(type) {
+            const txt = document.getElementById('output').value;
+            if(!txt) return alert("Générez un texte !");
+            
+            if(type === 'wa') {
+                window.location.href = "https://wa.me/16505361212?text=" + encodeURIComponent(txt);
+            } else {
+                window.location.href = `mailto:support@whatsapp.com?subject=URGENT REPORT&body=${encodeURIComponent(txt)}`;
+            }
+        }
+    </script>
+</body>
+</html>
