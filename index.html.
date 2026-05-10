@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MADARA SOLITAIRE - BAN STATION 🛡️</title>
+    <style>
+        :root { --red: #ff0000; --dark: #000000; --gray: #111111; --crimson: #990000; }
+        body { background: var(--dark); color: #e0e0e0; font-family: 'Courier New', Courier, monospace; display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
+        #login-screen { background: var(--gray); border: 2px solid var(--red); padding: 30px; border-radius: 10px; text-align: center; margin-top: 100px; box-shadow: 0 0 20px var(--crimson); }
+        #main-content { display: none; width: 100%; max-width: 600px; }
+        .card { background: var(--gray); border: 1px solid var(--red); border-radius: 8px; padding: 20px; box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); }
+        h1 { color: var(--red); text-shadow: 2px 2px #330000; text-transform: uppercase; letter-spacing: 3px; }
+        input, textarea { width: 100%; padding: 12px; margin: 10px 0; background: #080808; border: 1px solid #444; color: #fff; border-radius: 4px; box-sizing: border-box; }
+        input:focus { border-color: var(--red); outline: none; }
+        .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+        .btn { background: #111; border: 1px solid var(--red); color: white; padding: 12px; cursor: pointer; transition: 0.3s; font-weight: bold; border-radius: 4px; }
+        .btn:hover { background: var(--red); color: black; box-shadow: 0 0 10px var(--red); }
+        #output { color: #ff3333; height: 180px; font-size: 0.85rem; border-left: 3px solid var(--red); }
+        .copy-btn { width: 100%; background: var(--red); border: none; color: white; padding: 15px; margin-top: 15px; cursor: pointer; font-weight: bold; text-transform: uppercase; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    <!-- Écran de Connexion -->
+    <div id="login-screen">
+        <h1>MADARA AUTH</h1>
+        <p>Introduce la clave de acceso:</p>
+        <input type="password" id="passInput" placeholder="Password...">
+        <button class="btn" style="width: 100%;" onclick="checkPass()">ACCEDER</button>
+    </div>
+
+    <!-- Interface Principale -->
+    <div id="main-content">
+        <div class="card">
+            <h1>MADARA SOLITAIRE 🛡️</h1>
+            <p style="text-align:center; font-size: 0.8rem; color: #666;">BAN STATION V2 - ELITE SUPPORT</p>
+            
+            <input type="text" id="target" placeholder="Numéro Cible (ex: +225...)">
+            
+            <div class="btn-grid">
+                <button class="btn" onclick="gen(1)">🛑 CRITICAL SPAM</button>
+                <button class="btn" onclick="gen(2)">🔞 VIOLACIÓN 18+</button>
+                <button class="btn" onclick="gen(3)">🛡️ EXPLOIT SECURITY</button>
+                <button class="btn" onclick="gen(4)">⏳ BAN 72H TEMP</button>
+            </div>
+
+            <textarea id="output" readonly placeholder="Le support de Madara s'affichera ici..."></textarea>
+            <button class="copy-btn" onclick="copy()">COPIER & ENVOYER AU SUPPORT</button>
+        </div>
+    </div>
+
+    <script>
+        function checkPass() {
+            const pass = document.getElementById('passInput').value;
+            if(pass === "madara225") {
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+            } else {
+                alert("Clave incorrecta.");
+            }
+        }
+
+        function gen(type) {
+            let n = document.getElementById('target').value || "[NÚMERO]";
+            let res = "";
+            
+            if(type === 1) {
+                res = `⚠️ REPORTE DE INCIDENCIA MASIVA ⚠️\n\nEstimado soporte, reporto el número ${n} por envío sistemático de spam malicioso y saturación de servidores. Esta cuenta está utilizando scripts de automatización prohibidos. Solicitamos el cierre inmediato de la línea por abuso técnico. 🚨🚫`;
+            } else if(type === 2) {
+                res = `🔞 REPORTE DE CONTENIDO ILEGAL 🔞\n\nEl usuario ${n} ha sido detectado distribuyendo contenido prohibido y altamente sensible en múltiples grupos. Es una violación directa de las normas de Meta. Procedan con el baneo permanente por seguridad de la comunidad. 🛑🔞`;
+            } else if(type === 3) {
+                res = `🛡️ ALERTA DE SEGURIDAD CRÍTICA 🛡️\n\nSe ha identificado que el número ${n} está realizando intentos de phishing y robo de cuentas mediante ingeniería social. Su actividad pone en riesgo el cifrado de extremo a extremo de otros usuarios. Acción urgente requerida. 📑🔒`;
+            } else if(type === 4) {
+                res = `⏳ SOLICITUD DE SUSPENSIÓN PREVENTIVA ⏳\n\nReporto comportamiento abusivo y hostigamiento constante desde el número ${n}. Solicitamos una suspensión de 72 horas para revisión de actividad fraudulenta y protección de privacidad. 📉⌛`;
+            }
+            
+            document.getElementById('output').value = res;
+        }
+
+        function copy() {
+            let t = document.getElementById('output');
+            if(!t.value) return alert("Genera un soporte primero.");
+            t.select();
+            document.execCommand('copy');
+            alert('Support de Madara copié !');
+        }
+    </script>
+</body>
+</html>
