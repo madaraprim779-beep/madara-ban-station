@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MADARA SOLITAIRE - BAN STATION 🛡️</title>
+    <style>
+        :root { --red: #ff0000; --dark: #000000; --gray: #111111; --crimson: #990000; --gmail: #EA4335; --whatsapp: #25D366; }
+        body { background: var(--dark); color: #e0e0e0; font-family: 'Courier New', Courier, monospace; display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
+        
+        .container { background: var(--gray); border: 2px solid var(--crimson); padding: 25px; border-radius: 15px; width: 100%; max-width: 400px; text-align: center; box-shadow: 0 0 25px var(--crimson); }
+        h1 { color: var(--red); text-shadow: 2px 2px #000; font-size: 1.6rem; margin-bottom: 5px; }
+        
+        input { width: 90%; padding: 12px; margin: 10px 0; background: #0a0a0a; border: 1px solid var(--crimson); color: white; border-radius: 5px; text-align: center; font-weight: bold; }
+        input:focus { outline: none; border-color: var(--red); box-shadow: 0 0 10px var(--red); }
+        
+        .btn-group { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
+        
+        button { width: 100%; padding: 15px; border: none; font-weight: bold; cursor: pointer; border-radius: 8px; transition: 0.3s; font-size: 14px; text-transform: uppercase; }
+        
+        .btn-wa { background: var(--whatsapp); color: white; }
+        .btn-wa:hover { background: #1ebe57; box-shadow: 0 0 15px var(--whatsapp); }
+        
+        .btn-gm { background: var(--gmail); color: white; }
+        .btn-gm:hover { background: #c53023; box-shadow: 0 0 15px var(--gmail); }
+
+        .footer { margin-top: 25px; font-size: 0.75rem; color: #444; letter-spacing: 1px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>MADARA SOLITAIRE 🛡️</h1>
+        <p style="color: var(--red); font-weight: bold; margin-bottom: 20px;">BAN STATION V2 - MULTI-SUPPORT</p>
+        
+        <hr style="border: 0.5px solid #333; margin-bottom: 20px;">
+
+        <label>NUMÉRO DE LA CIBLE :</label>
+        <input type="tel" id="numeroCible" placeholder="Ex: +2250102030405">
+
+        <label>MOTIF DU BAN :</label>
+        <input type="text" id="motif" placeholder="Spam / Harcèlement / Insulte">
+
+        <div class="btn-group">
+            <button class="btn-wa" onclick="envoyerSupport('whatsapp')">Envoyer via WhatsApp 🔥</button>
+            <button class="btn-gm" onclick="envoyerSupport('gmail')">Envoyer via Gmail ✉️</button>
+        </div>
+
+        <div class="footer">DÉVELOPPÉ PAR MADARA | DOMINATION 2026</div>
+    </div>
+
+    <script>
+        function envoyerSupport(type) {
+            // --- CONFIGURATION ---
+            const tonNumeroWA = "2250141634567"; 
+            const tonEmail = "tonadresse@gmail.com"; // METS TON GMAIL ICI
+            // ---------------------
+
+            const cible = document.getElementById('numeroCible').value;
+            const raison = document.getElementById('motif').value || "Aucun motif précisé";
+
+            if (cible === "") {
+                alert("❌ Erreur : Entre le numéro de la cible !");
+                return;
+            }
+
+            const titreMessage = "🚨 DEMANDE DE BAN REÇUE";
+            const corpsMessage = `👤 Cible : ${cible}\n📝 Motif : ${raison}\n━━━━━━━━━━━━━━━\nLancement de l'offensive imminent !`;
+
+            if (type === 'whatsapp') {
+                // Version WhatsApp
+                const textWA = `Salut Maître Madara,\n\n*${titreMessage}*\n━━━━━━━━━━━━━━━\n${corpsMessage}`;
+                const urlWA = "https://wa.me/" + tonNumeroWA + "?text=" + encodeURIComponent(textWA);
+                window.open(urlWA, '_blank');
+            } 
+            else if (type === 'gmail') {
+                // Version Gmail
+                const sujet = "OFFENSIVE BAN : " + cible;
+                const urlGM = `mailto:${tonEmail}?subject=${encodeURIComponent(sujet)}&body=${encodeURIComponent(corpsMessage)}`;
+                window.location.href = urlGM;
+            }
+        }
+    </script>
+</body>
+</html>
