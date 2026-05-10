@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MADARA SOLITAIRE - BAN STATION 🛡️</title>
+    <style>
+        :root { --red: #ff0000; --dark: #000000; --gray: #111111; --crimson: #990000; }
+        body { background: var(--dark); color: #e0e0e0; font-family: 'Courier New', Courier, monospace; display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
+        
+        .container { background: var(--gray); border: 2px solid var(--crimson); padding: 20px; border-radius: 10px; width: 100%; max-width: 400px; text-align: center; box-shadow: 0 0 20px var(--crimson); }
+        h1 { color: var(--red); text-shadow: 2px 2px #000; font-size: 1.5rem; }
+        
+        input { width: 90%; padding: 12px; margin: 10px 0; background: #222; border: 1px solid var(--crimson); color: white; border-radius: 5px; text-align: center; }
+        
+        button { width: 100%; padding: 15px; background: var(--crimson); color: white; border: none; font-weight: bold; cursor: pointer; border-radius: 5px; transition: 0.3s; margin-top: 10px; }
+        button:hover { background: var(--red); box-shadow: 0 0 15px var(--red); }
+        
+        .footer { margin-top: 20px; font-size: 0.8rem; color: #555; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>MADARA SOLITAIRE 🛡️</h1>
+        <p style="color: var(--red);">BAN STATION V2</p>
+        
+        <hr style="border: 0.5px solid #333;">
+
+        <label>NUMÉRO DE LA CIBLE :</label>
+        <input type="tel" id="numeroCible" placeholder="Ex: +2250102030405">
+
+        <label>MOTIF DU BAN :</label>
+        <input type="text" id="motif" placeholder="Ex: Spam / Harcèlement">
+
+        <button onclick="envoyerAuSupport()">LANCER L'OFFENSIVE 🔥</button>
+
+        <div class="footer">Propriété de Madara Solitaire | 2026</div>
+    </div>
+
+    <script>
+        function envoyerAuSupport() {
+            // REMPLACE PAR TON NUMÉRO WHATSAPP ICI (sans le +)
+            const tonNumeroSupport = "2250141634567"; // Exemple
+
+            const cible = document.getElementById('numeroCible').value;
+            const raison = document.getElementById('motif').value;
+
+            if (cible === "") {
+                alert("Erreur Maître : Entrez le numéro de la cible !");
+                return;
+            }
+
+            // Construction du message automatique pour le support
+            const message = "Salut Maître Madara,\n\n" +
+                          "🚨 *DEMANDE DE BAN REÇUE*\n" +
+                          "━━━━━━━━━━━━━━━\n" +
+                          "👤 *Cible :* " + cible + "\n" +
+                          "📝 *Motif :* " + raison + "\n" +
+                          "━━━━━━━━━━━━━━━\n" +
+                          "Lancement du raid imminent ! 🛡️";
+
+            // Encodage pour le lien WhatsApp
+            const url = "https://wa.me/" + tonNumeroSupport + "?text=" + encodeURIComponent(message);
+
+            // Redirection vers WhatsApp
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>
